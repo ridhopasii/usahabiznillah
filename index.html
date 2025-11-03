@@ -87,6 +87,7 @@
             <h2 class="text-2xl font-extrabold text-gray-900 mb-6 border-b-2 border-green-500 pb-2">
                 Manajemen Produk (Admin)
             </h2>
+            <!-- Catatan: Pesan ini diubah saat panel dibuka -->
             <div id="admin-status" class="mb-4 p-3 rounded-lg text-sm bg-green-100 text-green-800">
                 Akses Admin Aktif. Silakan isi form di bawah untuk menambahkan laptop baru.
             </div>
@@ -111,8 +112,9 @@
                     <label for="imageFile" class="block text-sm font-medium text-gray-700">Upload Gambar Laptop (.jpg/.png) - Max 1MB (Disimpan di Storage)</label>
                     <input type="file" id="imageFile" name="imageFile" accept="image/png, image/jpeg" class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100">
                 </div>
-                <button type="submit" class="mt-6 w-full py-2 px-4 border border-transparent rounded-xl shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition duration-150">
-                    Tambah Laptop ke Stok
+                <!-- TOMBOL SUBMIT DENGAN STATUS LOADING -->
+                <button type="submit" id="submit-laptop-btn" disabled class="mt-6 w-full py-2 px-4 border border-transparent rounded-xl shadow-sm text-sm font-medium text-white bg-gray-400 cursor-not-allowed">
+                    Memuat Layanan...
                 </button>
             </form>
             
@@ -420,7 +422,11 @@
                 db = getFirestore(app);
                 auth = getAuth(app);
                 storage = getStorage(app); 
-
+                
+                // Setelah semua layanan diinisialisasi, aktifkan tombol submit jika isAdmin = true (setelah login password)
+                // PENTING: Untuk memastikan ini tidak diaktifkan sampai login admin terjadi, kita akan aktifkan di toggleAdminPanel(true)
+                // Kita akan biarkan inisialisasi ini terjadi di awal untuk koneksi
+                
                 if (initialAuthToken) { 
                     await signInWithCustomToken(auth, initialAuthToken);
                 } else {
@@ -442,6 +448,19 @@
                 document.getElementById('loading-message').textContent = 'Gagal memuat data: Koneksi database bermasalah.';
             }
         }
+        
+        // FUNGSI BARU UNTUK MENGAKTIFKAN TOMBOL SETELAH SEMUA SIAP
+        function enableSubmitButton() {
+            const submitBtn = document.getElementById('submit-laptop-btn');
+            // Cek apakah db dan storage sudah terinisialisasi
+            if (db && storage && isAdmin) {
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('bg-gray-400', 'cursor-not-allowed');
+                submitBtn.classList.add('bg-green-600', 'hover:bg-green-700', 'focus:ring-green-500');
+                submitBtn.textContent = 'Tambah Laptop ke Stok';
+            }
+        }
+
 
         // Function to render the list of laptops
         function renderLaptops(laptops) {
@@ -510,11 +529,20 @@
         document.getElementById('add-laptop-form').addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            if (!isAdmin || !db || !storage) {
-                displayMessage('Akses ditolak, database, atau Storage belum siap.', 'red');
+            // Pengecekan Kesiapan yang Lebih Ketat
+            if (!isAdmin) {
+                 displayMessage('Akses ditolak. Anda harus login admin.', 'red');
+                 return;
+            }
+            if (!db || !storage) {
+                displayMessage('Database atau Storage belum siap. Tunggu sebentar dan coba lagi.', 'red');
                 return;
             }
             
+            const submitBtn = document.getElementById('submit-laptop-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Mengunggah...';
+
             const fileInput = document.getElementById('imageFile');
             const file = fileInput.files[0];
             let downloadURL = '';
@@ -558,6 +586,9 @@
             } catch (error) {
                 console.error("Error adding document or uploading image:", error);
                 displayMessage(`Gagal: ${error.message || 'Cek konsol untuk detail error.'}`, 'red');
+            } finally {
+                // Selalu aktifkan kembali tombol setelah proses selesai
+                enableSubmitButton();
             }
         });
 
@@ -593,6 +624,7 @@
                     isAdmin = true;
                     toggleAdminPanel(true);
                     displayMessage("Akses Admin berhasil dibuka. Anda sekarang bisa menambah/menghapus produk.", 'green');
+                    enableSubmitButton(); // Aktifkan tombol submit setelah login
                 } else if (passwordAttempt !== null) {
                     displayMessage("Password salah. Akses ditolak.", 'red');
                 }
