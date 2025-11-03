@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usu Polmed Servis | Solusi Teknis Mahasiswa USU & Polmed</title>
-    <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Muat Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
     <!-- Konfigurasi Font (Inter) --><style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         body {
@@ -18,21 +18,13 @@
             stroke-linecap: round;
             stroke-linejoin: round;
         }
-        .testimonial-card {
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-        .testimonial-card:hover {
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            transform: translateY(-5px);
-        }
         /* Style untuk Floating WhatsApp Button */
         .floating-whatsapp {
             position: fixed;
             bottom: 20px;
             right: 20px;
             z-index: 1000;
-            background-color: #25D366; /* Warna hijau WhatsApp */
+            background-color: #25D366; 
             color: white;
             border-radius: 50%;
             width: 60px;
@@ -48,8 +40,8 @@
             box-shadow: 0 6px 15px rgba(0,0,0,0.35);
         }
         .floating-whatsapp svg {
-            fill: white; /* Mengisi ikon dengan warna putih */
-            stroke: none; /* Menghapus stroke jika ada */
+            fill: white;
+            stroke: none;
             width: 30px;
             height: 30px;
         }
@@ -60,7 +52,7 @@
     <!-- Navbar --><header class="bg-white shadow-md sticky top-0 z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <!-- Logo Dwiwarna (USU Hijau, Polmed Ungu) --><a href="#" class="text-2xl font-bold tracking-tight">
+                <!-- Logo Dwiwarna (Usu Hijau, Polmed Ungu) --><a href="#" class="text-2xl font-bold tracking-tight">
                     <span class="text-green-700">Usu</span> 
                     <span class="text-purple-700">Polmed</span>
                     <span class="text-gray-900"> Servis</span>
@@ -114,8 +106,9 @@
                     <label for="deskripsi" class="block text-sm font-medium text-gray-700">Deskripsi Singkat</label>
                     <input type="text" id="deskripsi" name="deskripsi" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 p-2 border">
                 </div>
-                <!-- Input FILE GANTI Input URL --><div class="mt-4">
-                    <label for="imageFile" class="block text-sm font-medium text-gray-700">Upload Gambar Laptop (.jpg/.png) - Max 1MB</label>
+                <!-- Input FILE -->
+                <div class="mt-4">
+                    <label for="imageFile" class="block text-sm font-medium text-gray-700">Upload Gambar Laptop (.jpg/.png) - Max 1MB (Disimpan di Storage)</label>
                     <input type="file" id="imageFile" name="imageFile" accept="image/png, image/jpeg" class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100">
                 </div>
                 <button type="submit" class="mt-6 w-full py-2 px-4 border border-transparent rounded-xl shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition duration-150">
@@ -140,9 +133,9 @@
                 </p>
             </div>
 
-            <!-- Services Grid with more detail --><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <!-- Services Grid --><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
-                <!-- Service 1: Laptop Repair (Software) --><div class="bg-gray-50 p-6 rounded-xl shadow-xl border-t-4 border-green-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
+                <!-- Service 1: Perbaikan Software --><div class="bg-gray-50 p-6 rounded-xl shadow-xl border-t-4 border-green-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
                     <div class="text-green-600 mb-4 inline-block">
                         <svg class="h-10 w-10 icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 13.5l-3 3-1.5-1.5 3-3"/><path d="M18 10l-4-4"/></svg>
                     </div>
@@ -160,7 +153,7 @@
                     </ul>
                 </div>
                 
-                <!-- Service 2: Laptop Repair (Hardware) --><div class="bg-gray-50 p-6 rounded-xl shadow-xl border-t-4 border-green-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
+                <!-- Service 2: Perbaikan Hardware --><div class="bg-gray-50 p-6 rounded-xl shadow-xl border-t-4 border-green-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
                     <div class="text-green-600 mb-4 inline-block">
                         <svg class="h-10 w-10 icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 17l-1 4"/><rect width="20" height="12" x="2" y="5" rx="2" ry="2"/><path d="M2 17h20"/></svg>
                     </div>
@@ -178,7 +171,7 @@
                     </ul>
                 </div>
 
-                <!-- Service 3: Printer Service --><div class="bg-gray-50 p-6 rounded-xl shadow-xl border-t-4 border-green-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
+                <!-- Service 3: Servis Printer --><div class="bg-gray-50 p-6 rounded-xl shadow-xl border-t-4 border-green-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
                     <div class="text-green-600 mb-4 inline-block">
                         <svg class="h-10 w-10 icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M18 10V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v4"/><path d="M12 14v7"/></svg>
                     </div>
@@ -267,19 +260,19 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Testimonial 1 --><div class="testimonial-card p-6 bg-purple-50 rounded-xl border-l-4 border-purple-500">
+                <!-- Testimonial 1 --><div class="p-6 bg-purple-50 rounded-xl border-l-4 border-purple-500 hover:shadow-lg transition duration-300">
                     <p class="italic text-gray-700 mb-4">"Laptopku mati total karena tumpahan kopi, tapi di sini bisa dibenerin dalam 2 hari! Harganya masuk akal banget buat kantong anak kos. Recommended!"</p>
                     <p class="font-bold text-gray-900">Risa Anjani</p>
                     <p class="text-sm text-purple-600">Mahasiswa Fasilkom-TI, USU</p>
                 </div>
                 
-                <!-- Testimonial 2 --><div class="testimonial-card p-6 bg-purple-50 rounded-xl border-l-4 border-purple-500">
+                <!-- Testimonial 2 --><div class="p-6 bg-purple-50 rounded-xl border-l-4 border-purple-500 hover:shadow-lg transition duration-300">
                     <p class="italic text-gray-700 mb-4">"Beli laptop second di sini, unitnya mulus dan sudah terinstal semua program desain yang aku butuhin. Garansi sebulan bikin tenang. Mantap!"</p>
                     <p class="font-bold text-gray-900">Bagus Permana</p>
                     <p class="text-sm text-purple-600">Mahasiswa Jurusan Teknik Sipil, Polmed</p>
                 </div>
                 
-                <!-- Testimonial 3 --><div class="testimonial-card p-6 bg-purple-50 rounded-xl border-l-4 border-purple-500">
+                <!-- Testimonial 3 --><div class="p-6 bg-purple-50 rounded-xl border-l-4 border-purple-500 hover:shadow-lg transition duration-300">
                     <p class="italic text-gray-700 mb-4">"Printerku macet pas mau *deadline* laporan. Langsung dibawa ke sini, sorenya sudah kelar. Pelayanan ramah dan profesional. Nilai plus!"</p>
                     <p class="font-bold text-gray-900">Citra Dewi</p>
                     <p class="text-sm text-purple-600">Mahasiswa FEB, USU</p>
@@ -300,7 +293,8 @@
                         Stok real-time! Lihat unit terbaik yang sedang tersedia untuk kebutuhan kuliah.
                     </p>
                 </div>
-                <!-- Tombol ini sekarang memicu prompt password --><button id="show-admin-btn" class="px-4 py-2 bg-purple-600 text-white rounded-xl shadow-md hover:bg-purple-700 transition duration-150 text-sm font-medium">
+                <!-- Tombol Admin -->
+                <button id="show-admin-btn" class="px-4 py-2 bg-purple-600 text-white rounded-xl shadow-md hover:bg-purple-700 transition duration-150 text-sm font-medium">
                     + Tambah Produk (Admin)
                 </button>
             </div>
@@ -326,7 +320,7 @@
             
             <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-12">
                 
-                <!-- CTA 1: WhatsApp (Respon Cepat) --><a href="https://wa.me/6289699453507" target="_blank" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-bold rounded-xl shadow-lg text-purple-700 bg-white hover:bg-purple-50 transition duration-300 transform hover:scale-105">
+                <!-- CTA 1: WhatsApp --><a href="https://wa.me/6289699453507" target="_blank" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-bold rounded-xl shadow-lg text-purple-700 bg-white hover:bg-purple-50 transition duration-300 transform hover:scale-105">
                     <svg class="h-6 w-6 mr-2 icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 14.54 14.54 0 0 1-5.65 6.59 23.95 23.95 0 0 1-4.7 0 14.54 14.54 0 0 1-5.65-6.59A8.38 8.38 0 0 1 3 11.5c0-4.66 3.55-8.48 8-9.35l-1.5 1.5"/></svg>
                     WhatsApp (0896-9945-3507)
                 </a>
@@ -366,21 +360,20 @@
         </div>
     </footer>
 
-    <!-- Floating WhatsApp Button (NEW ADDITION) --><a href="https://wa.me/6289699453507?text=Halo%20Usu%20Polmed%20Servis,%20saya%20ingin%20bertanya%20tentang..." class="floating-whatsapp" target="_blank">
+    <!-- Floating WhatsApp Button (Selalu Tampil) -->
+    <a href="https://wa.me/6289699453507?text=Halo%20Usu%20Polmed%20Servis,%20saya%20ingin%20bertanya%20tentang..." class="floating-whatsapp" target="_blank">
+        <!-- Ikon WhatsApp (SVG) -->
         <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
             <path d="M12.04 2.34c-5.33 0-9.67 4.34-9.67 9.67s4.34 9.67 9.67 9.67 9.67-4.34 9.67-9.67-4.34-9.67-9.67-9.67zm.05 15.68c-1.42 0-2.82-.47-4.04-1.39l-.29-.17-3.05.79.8-.25c-.24-.44-.45-.92-.61-1.42l-.18-.54c-1.04-1.6-1.59-3.41-1.59-5.27.01-4.14 3.37-7.51 7.51-7.51 2.01 0 3.92.78 5.35 2.21 1.43 1.43 2.22 3.34 2.22 5.35 0 4.14-3.37 7.51-7.51 7.51zm3.83-5.21c-.2-.09-.9-.44-1.04-.49-.14-.05-.24-.07-.34.07-.1.14-.38.49-.46.59-.08.1-.16.12-.29.05-.14-.07-.6-.22-1.13-.7-.42-.39-.71-.7-1.01-1.22-.29-.49-.03-.45.06-.56.09-.1.2-.24.29-.36.09-.09.12-.17.18-.29.06-.11.03-.22-.02-.31-.05-.09-.45-1.07-.62-1.47-.16-.39-.32-.34-.46-.34-.14 0-.3.01-.46.01-.16 0-.41.06-.62.29-.2.22-.76.74-.76 1.81 0 1.07.78 2.09.89 2.25.1.16 1.51 2.31 3.61 3.23 1.95.83 2.33.74 2.76.69.43-.05 1.42-.58 1.63-1.15.21-.57.21-1.05.15-1.15-.06-.1-.2-.15-.42-.26z"/>
         </svg>
     </a>
 
-    <!-- Firebase SDK Imports --><script type="module">
+    <!-- Firebase SDK & Logic --><script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, addDoc, onSnapshot, getDoc, doc, deleteDoc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
         import { setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-        // Import Firebase Storage
         import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-storage.js";
-
-        // setLogLevel('Debug'); // Uncomment for debugging
 
         // Global variables for Firebase (MANDATORY USE)
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
@@ -389,8 +382,7 @@
 
         // Admin State and Password
         let isAdmin = false;
-        const ADMIN_PASSWORD = "Bismillah24**"; // Password yang diminta
-        // Batas ukuran file ini tetap penting untuk mencegah upload file terlalu besar ke Storage yang bisa mahal
+        const ADMIN_PASSWORD = "Bismillah24**"; 
         const MAX_FILE_SIZE_MB = 1; 
 
         let app, db, auth, storage;
@@ -413,13 +405,11 @@
                 panel.classList.remove('hidden');
                 panel.classList.add('active-admin');
                 button.textContent = 'Sembunyikan Produk (Admin)';
-                // Tampilkan tombol Hapus pada semua kartu yang ada
                 document.querySelectorAll('.delete-btn').forEach(btn => btn.classList.remove('hidden'));
             } else {
                 panel.classList.add('hidden');
                 panel.classList.remove('active-admin');
                 button.textContent = '+ Tambah Produk (Admin)';
-                // Sembunyikan tombol Hapus
                 document.querySelectorAll('.delete-btn').forEach(btn => btn.classList.add('hidden'));
             }
         }
@@ -429,16 +419,14 @@
                 app = initializeApp(firebaseConfig);
                 db = getFirestore(app);
                 auth = getAuth(app);
-                storage = getStorage(app); // Inisialisasi Firebase Storage
+                storage = getStorage(app); 
 
-                // 1. Authenticate User (needed for Firestore public rules)
                 if (initialAuthToken) { 
                     await signInWithCustomToken(auth, initialAuthToken);
                 } else {
                     await signInAnonymously(auth);
                 }
 
-                // 2. Set Auth State Listener
                 onAuthStateChanged(auth, (user) => {
                     if (user) {
                         userId = user.uid;
@@ -458,20 +446,18 @@
         // Function to render the list of laptops
         function renderLaptops(laptops) {
             const container = document.getElementById('laptop-list-container');
-            container.innerHTML = ''; // Clear existing content
+            container.innerHTML = ''; 
 
             if (laptops.length === 0) {
                 container.innerHTML = '<p class="text-center col-span-full text-gray-500">Saat ini tidak ada unit laptop second yang tersedia. Silakan cek lagi nanti!</p>';
                 return;
             }
 
-            // Cek apakah panel admin sedang aktif/terbuka (untuk menampilkan tombol hapus)
             const isAdminActive = document.getElementById('admin-panel')?.classList.contains('active-admin');
 
             laptops.forEach(laptop => {
                 const formatter = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 });
                 const priceFormatted = formatter.format(laptop.harga);
-                // ImageSrc sekarang bisa berupa Base64 (lama) atau URL Storage (baru)
                 const defaultImage = "https://placehold.co/600x400/16a34a/ffffff?text=Usu+Polmed+Servis+Laptop"; 
                 const imageSrc = laptop.imageUrl || defaultImage; 
 
@@ -492,7 +478,6 @@
                 container.insertAdjacentHTML('beforeend', cardHtml);
             });
             
-            // Re-attach delete handlers if admin is active
             if (isAdminActive) {
                 document.querySelectorAll('.delete-btn').forEach(button => {
                     button.addEventListener('click', handleDelete);
@@ -533,8 +518,7 @@
             const fileInput = document.getElementById('imageFile');
             const file = fileInput.files[0];
             let downloadURL = '';
-            let newLaptop = {};
-
+            
             const formData = new FormData(e.target);
             const laptopName = formData.get('nama');
             
@@ -558,7 +542,7 @@
                 }
                 
                 // 3. Buat objek data baru
-                 newLaptop = {
+                 let newLaptop = {
                     nama: laptopName,
                     harga: parseInt(formData.get('harga'), 10),
                     deskripsi: formData.get('deskripsi'),
@@ -589,9 +573,6 @@
             try {
                 const docPath = `artifacts/${appId}/public/data/laptops/${laptopId}`;
                 const docRef = doc(db, docPath);
-                
-                // Note: Logika penghapusan file di Firebase Storage tidak diimplementasikan
-                // di sini karena kompleksitasnya membutuhkan Cloud Functions. Kami hanya menghapus data Firestore.
 
                 await deleteDoc(docRef);
                 displayMessage(`Laptop ID ${laptopId} berhasil dihapus.`, 'orange');
@@ -616,7 +597,6 @@
                     displayMessage("Password salah. Akses ditolak.", 'red');
                 }
             } else {
-                // If already admin, just toggle visibility
                 toggleAdminPanel(panel.classList.contains('hidden'));
             }
         });
@@ -636,19 +616,15 @@
             const menuButton = document.getElementById('menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
 
-            // Function to toggle the menu
             function toggleMenu() {
                 mobileMenu.classList.toggle('hidden');
             }
 
-            // Event listener for the button
             menuButton.addEventListener('click', toggleMenu);
 
-            // Close menu when a link is clicked (for better mobile UX)
             const mobileLinks = mobileMenu.querySelectorAll('a');
             mobileLinks.forEach(link => {
                 link.addEventListener('click', () => {
-                    // Only hide if the menu is visible
                     if (!mobileMenu.classList.contains('hidden')) {
                          toggleMenu();
                     }
