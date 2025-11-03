@@ -377,11 +377,31 @@
         import { setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
         import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-storage.js";
 
+        // Konfigurasi Firebase Anda yang lengkap (Disalin dari Firebase Console)
+        // KODE ANDA DI VERSEL AKAN MENGGANTI INI JIKA VARIABEL FIREBASE_CONFIG ADA
+        const VERCEL_FIREBASE_CONFIG = {
+          apiKey: "AIzaSyD_3sQGmoPJVm_3NEhvwASYPtNASbwkPRE",
+          authDomain: "usu-polmed.firebaseapp.com",
+          projectId: "usu-polmed",
+          storageBucket: "usu-polmed.firebasestorage.app",
+          messagingSenderId: "814348036957",
+          appId: "1:814348036957:web:d100195a6f2ce65815d6b4",
+          measurementId: "G-9E6MSHVVNB"
+        };
+
+        // setLogLevel('Debug'); // Uncomment for debugging
+
         // Global variables for Firebase (MANDATORY USE)
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
         const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null; 
 
+        // LOGIKA BARU UNTUK MENGAMBIL KONFIGURASI:
+        // 1. Prioritas: __firebase_config (Lingkungan Canvas)
+        // 2. Alternatif: VERCEL_FIREBASE_CONFIG (Kunci Hardcoded jika dijalankan di Vercel/lingkungan umum)
+        let firebaseConfig = typeof __firebase_config !== 'undefined' 
+            ? JSON.parse(__firebase_config) 
+            : VERCEL_FIREBASE_CONFIG; // Ambil kunci yang Anda berikan
+        
         // Admin State and Password
         let isAdmin = false;
         const ADMIN_PASSWORD = "Bismillah24**"; 
@@ -397,6 +417,18 @@
             statusDiv.className = `mb-4 p-3 rounded-lg text-sm bg-${color}-100 text-${color}-800`;
         }
         
+        // FUNGSI BARU UNTUK MENGAKTIFKAN TOMBOL SETELAH SEMUA SIAP
+        function enableSubmitButton() {
+            const submitBtn = document.getElementById('submit-laptop-btn');
+            // Hanya aktifkan jika db, storage siap, DAN admin sudah login
+            if (db && storage && isAdmin) {
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('bg-gray-400', 'cursor-not-allowed');
+                submitBtn.classList.add('bg-green-600', 'hover:bg-green-700', 'focus:ring-green-500');
+                submitBtn.textContent = 'Tambah Laptop ke Stok';
+            }
+        }
+
         // Function to toggle Admin Panel visibility and buttons
         function toggleAdminPanel(show) {
             const panel = document.getElementById('admin-panel');
@@ -423,10 +455,6 @@
                 auth = getAuth(app);
                 storage = getStorage(app); 
                 
-                // Setelah semua layanan diinisialisasi, aktifkan tombol submit jika isAdmin = true (setelah login password)
-                // PENTING: Untuk memastikan ini tidak diaktifkan sampai login admin terjadi, kita akan aktifkan di toggleAdminPanel(true)
-                // Kita akan biarkan inisialisasi ini terjadi di awal untuk koneksi
-                
                 if (initialAuthToken) { 
                     await signInWithCustomToken(auth, initialAuthToken);
                 } else {
@@ -449,19 +477,6 @@
             }
         }
         
-        // FUNGSI BARU UNTUK MENGAKTIFKAN TOMBOL SETELAH SEMUA SIAP
-        function enableSubmitButton() {
-            const submitBtn = document.getElementById('submit-laptop-btn');
-            // Cek apakah db dan storage sudah terinisialisasi
-            if (db && storage && isAdmin) {
-                submitBtn.disabled = false;
-                submitBtn.classList.remove('bg-gray-400', 'cursor-not-allowed');
-                submitBtn.classList.add('bg-green-600', 'hover:bg-green-700', 'focus:ring-green-500');
-                submitBtn.textContent = 'Tambah Laptop ke Stok';
-            }
-        }
-
-
         // Function to render the list of laptops
         function renderLaptops(laptops) {
             const container = document.getElementById('laptop-list-container');
